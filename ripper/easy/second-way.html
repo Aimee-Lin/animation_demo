@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .wave{
+        background:url("water.jpg");
+        z-index:2;
+        position:absolute;
+        overflow: hidden;
+        width:200px;
+        height:200px;
+    }
+    .wave1{
+        position:absolute;
+        border-radius:300px;
+        background: rgba(76, 221, 193, 0.53);
+        z-index:3;
+        -webkit-animation:w 1s .2s forwards;
+    }
+    @-webkit-keyframes w{
+        0%{
+            top:calc((100% - 30px)/2);
+            left:calc((100% - 30px)/2);
+            width:30px;
+            height:30px;
+        }
+        100%{
+            top:calc((100% - 300px)/2);
+            left:calc((100% - 300px)/2);
+            width:300px;
+            height:300px;
+            opacity: 0;
+        }
+    }
+</style>
+<body>
+<div class="wave" id="content" onclick="ripple()"></div>
+</body>
+<script src="jquery.min.js"></script>
+<script>
+    function ripple () {
+        $('#content').prepend('<div class="wave1 water"></div>');
+        setTimeout(function () {
+            $('.water').remove();
+        },1000)
+    }
+</script>
+</html>
